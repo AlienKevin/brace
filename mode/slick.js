@@ -136,11 +136,9 @@ ace.define("ace/mode/slick",["require","exports","module","ace/lib/oop","ace/mod
     var oop = acequire("../lib/oop");
     var TextMode = acequire("./text").Mode;
     var HighlightRules = acequire("./slick_highlight_rules").SlickHighlightRules;
-    var FoldMode = acequire("./folding/cstyle").FoldMode;
     
     var Mode = function() {
         this.HighlightRules = HighlightRules;
-        this.foldingRules = new FoldMode();
         this.$behaviour = this.$defaultBehaviour;
     };
     oop.inherits(Mode, TextMode);
