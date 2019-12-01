@@ -77,9 +77,6 @@ ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/l
                     return "constant.language"; 
                 }
             }, {
-                token : keywordMapper,
-                regex : "[\\w\\xff-\\u218e\\u2455-\\uffff]+\\b"
-            }, {
                 token: "variable.language",
                 regex: /\[markdown\|/,
                 next: "markdown"
