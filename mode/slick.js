@@ -72,7 +72,7 @@ ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/l
                     return "constant.language"; 
                 }
             }, {
-                regex : "^" + smallRe  + idRe + "+\??",
+                regex : "^" + smallRe  + idRe + "+\\??",
                 token : function(value) {
                     return "constant.language"; 
                 }
