@@ -28,7 +28,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-ace.define("ace/mode/abc_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function (acequire, exports, module) {
+ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function (acequire, exports, module) {
     "use strict";
     
     var oop = acequire("../lib/oop");
@@ -128,4 +128,28 @@ ace.define("ace/mode/abc_highlight_rules",["require","exports","module","ace/lib
     
     exports.SlickHighlightRules = SlickHighlightRules;
     });
+
+
+ace.define("ace/mode/slick",["require","exports","module","ace/lib/oop","ace/mode/text","ace/mode/slick_highlight_rules","ace/mode/folding/cstyle"], function(acequire, exports, module) {
+    "use strict";
+    
+    var oop = acequire("../lib/oop");
+    var TextMode = acequire("./text").Mode;
+    var HighlightRules = acequire("./slick_highlight_rules").SlickHighlightRules;
+    var FoldMode = acequire("./folding/cstyle").FoldMode;
+    
+    var Mode = function() {
+        this.HighlightRules = HighlightRules;
+        this.foldingRules = new FoldMode();
+        this.$behaviour = this.$defaultBehaviour;
+    };
+    oop.inherits(Mode, TextMode);
+    
+    (function() {
+        this.lineCommentStart = "#";
+        this.$id = "ace/mode/slick";
+    }).call(Mode.prototype);
+    
+    exports.Mode = Mode;
+});
     
