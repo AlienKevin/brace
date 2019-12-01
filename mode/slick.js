@@ -28,11 +28,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define(function(require, exports, module) {
+ace.define("ace/mode/abc_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function (acequire, exports, module) {
     "use strict";
     
-    var oop = require("../lib/oop");
-    var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+    var oop = acequire("../lib/oop");
+    var TextHighlightRules = acequire("./text_highlight_rules").TextHighlightRules;
     
     var SlickHighlightRules = function() {
         var escapeRe = /\\(\d+|['"\\&trn])/;
