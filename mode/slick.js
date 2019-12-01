@@ -39,7 +39,7 @@ ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/l
         
         var smallRe = /[a-z_]/.source;
         var largeRe = /[A-Z]/.source;
-        var idRe = /[a-z_A-Z0-9']/.source;
+        var idRe = /[a-zA-Z0-9]/.source;
     
         this.$rules = {
             start: [{
@@ -65,21 +65,17 @@ ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/l
                 token : "operator.punctuation",
                 regex : /[,]/
             }, {
-                regex : largeRe + idRe + "+\\.?",
+                regex : "\\b" + largeRe + idRe + "+\\.?",
                 token : function(value) {
                     if (value[value.length - 1] == ".")
                         return "entity.name.function"; 
                     return "constant.language"; 
                 }
             }, {
-                regex : "^" + smallRe  + idRe + "+",
+                regex : "^" + smallRe  + idRe + "+\??",
                 token : function(value) {
                     return "constant.language"; 
                 }
-            }, {
-                token: "variable.language",
-                regex: /\[markdown\|/,
-                next: "markdown"
             }, {
                 token: "paren.lparen",
                 regex: /[\[({]/ 
@@ -87,12 +83,6 @@ ace.define("ace/mode/slick_highlight_rules",["require","exports","module","ace/l
                 token: "paren.rparen",
                 regex: /[\])}]/
             } ],
-            markdown: [{
-                regex: /\|\]/,
-                next: "start"
-            }, {
-                defaultToken : "string"
-            }],
             string: [{
                 token: "constant.language.escape",
                 regex: escapeRe
